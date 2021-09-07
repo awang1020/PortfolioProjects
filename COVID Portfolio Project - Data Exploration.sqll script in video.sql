@@ -1,7 +1,7 @@
 
 SELECT *
 From PortfolioProject..CovidDeaths
-Where continent is not null -- pour enlever les données où les continents sont vides 
+Where continent is not null -- pour enlever les donnÃ©es oÃ¹ les continents sont vides 
 Order by 3,4
 
 
@@ -59,7 +59,7 @@ Order By TotalDeathCount desc
 
 
 
--- GLOBAL Numbers (on sait qu'il y a 2% de mortalité)
+-- GLOBAL Numbers (on sait qu'il y a 2% de mortalitÃ©)
 
 SELECT SUM(cast(new_cases as float)) AS total_cases, SUM(cast(new_deaths as float)) AS total_deaths, SUM(cast(new_deaths as float))/SUM(cast(new_cases as float))*100 as DeathPercentage
 -- Where location like '%France%'
@@ -88,7 +88,7 @@ Select dea.continent,
 	   vac.new_vaccinations,
 	   SUM(convert(float,vac.new_vaccinations)) 
 	   OVER (PARTITION BY dea.location 
-			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vacciné ajouté au fil des dates
+			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vaccinÃ© ajoutÃ© au fil des dates
 From PortfolioProject..CovidDeaths dea
 Join PortfolioProject..CovidVaccinations vac
 	ON dea.location = vac.location
@@ -108,7 +108,7 @@ Select dea.continent,
 	   vac.new_vaccinations,
 	   SUM(convert(float,vac.new_vaccinations)) 
 	   OVER (PARTITION BY dea.location 
-			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vacciné ajouté au fil des dates
+			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vaccinÃ© ajoutÃ© au fil des dates
 From PortfolioProject..CovidDeaths dea
 Join PortfolioProject..CovidVaccinations vac
 	ON dea.location = vac.location
@@ -144,7 +144,7 @@ Select dea.continent,
 	   vac.new_vaccinations,
 	   SUM(convert(float,vac.new_vaccinations)) 
 	   OVER (PARTITION BY dea.location 
-			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vacciné ajouté au fil des dates
+			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vaccinÃ© ajoutÃ© au fil des dates
 From PortfolioProject..CovidDeaths dea
 Join PortfolioProject..CovidVaccinations vac
 	ON dea.location = vac.location
@@ -169,7 +169,7 @@ Select dea.continent,
 	   vac.new_vaccinations,
 	   SUM(convert(float,vac.new_vaccinations)) 
 	   OVER (PARTITION BY dea.location 
-			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vacciné ajouté au fil des dates
+			 ORDER BY dea.location, dea.date) as RollingPeopleVaccinated -- le nombre de cas vaccinÃ© ajoutÃ© au fil des dates
 From PortfolioProject..CovidDeaths dea
 Join PortfolioProject..CovidVaccinations vac
 	ON dea.location = vac.location
