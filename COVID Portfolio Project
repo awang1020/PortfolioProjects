@@ -1,7 +1,11 @@
+/*
+Covid 19 Data Exploration - avec AlexTheAnalyst (YouTube)
+Compétences apprises: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+*/
 
 SELECT *
 From PortfolioProject..CovidDeaths
-Where continent is not null -- pour enlever les données où les continents sont vides 
+Where continent is not null -- pour enlever les données de la colonne continents qui sont vides 
 Order by 3,4
 
 
@@ -13,8 +17,10 @@ SELECT location, date, total_cases, new_cases, total_deaths, population
 From PortfolioProject..CovidDeaths
 Order By 1, 2
 
+
 -- Looking at total cases vs total deaths
 -- shows likelihood of dying if you contract covid in your contry
+
 SELECT location, date, total_cases, total_deaths, cast(total_deaths as float) / cast(total_cases as float)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
 Where location like '%France%'
@@ -22,6 +28,7 @@ Order By 1, 2
 
 -- Looking at Total Cases vs Population
 -- Shows what percentage of population got Covid
+
 SELECT location, date, total_cases, population, cast(total_cases as float) / cast(population as float)*100 as PercentPopulationInfected
 From PortfolioProject..CovidDeaths
 Where location like '%France%'
@@ -45,9 +52,6 @@ Order By TotalDeathCount desc
 
 
 -- Let's break things down by continent
-
-
-
 
 -- Showing continents with the highest death count per population
 
@@ -79,7 +83,6 @@ Order By 1, 2
 
 
 -- Looking at Total population vs Vaccinations 
-
 
 Select dea.continent, 
 	   dea.location, 
@@ -177,5 +180,3 @@ Join PortfolioProject..CovidVaccinations vac
 WHERE dea.continent IS NOT NULL
 --ORDER BY 2,3
 
-Select *
-From PercentPopulationVaccinated
